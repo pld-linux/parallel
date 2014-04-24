@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Shell tool for executing jobs in parallel
 Name:		parallel
-Version:	20131222
+Version:	20140422
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	http://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	782e594b226454ef58ac4e3d4addaba4
+# Source0-md5:	be1cb2f4b15d4631a4712909cb7ba191
 URL:		http://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov

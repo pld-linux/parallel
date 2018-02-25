@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Shell tool for executing jobs in parallel
 Name:		parallel
-Version:	20150522
+Version:	20180222
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	http://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	baa13d9ed0caad76004e9fe9b9b78c72
+# Source0-md5:	33bf53bf8e3422ad05cfa7935315cd5f
 URL:		http://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
@@ -61,13 +61,19 @@ rm -rf $RPM_BUILD_ROOT
 %doc src/*.texi
 %dir %{_sysconfdir}/parallel
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/parallel/config
+%attr(755,root,root) %{_bindir}/niceload
 %attr(755,root,root) %{_bindir}/parallel
+%attr(755,root,root) %{_bindir}/parcat
+%attr(755,root,root) %{_bindir}/parset
 %attr(755,root,root) %{_bindir}/sem
 %attr(755,root,root) %{_bindir}/sql
-%attr(755,root,root) %{_bindir}/niceload
 %{_mandir}/man1/niceload.1*
 %{_mandir}/man1/parallel.1*
-%{_mandir}/man1/sem.1*
 %{_mandir}/man1/parallel-sql.1*
+%{_mandir}/man1/parcat.1*
+%{_mandir}/man1/parset.1*
+%{_mandir}/man1/sem.1*
+%{_mandir}/man7/parallel_alternatives.7*
+%{_mandir}/man7/parallel_book.7*
 %{_mandir}/man7/parallel_design.7*
 %{_mandir}/man7/parallel_tutorial.7*

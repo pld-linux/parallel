@@ -1,13 +1,13 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Shell tool for executing jobs in parallel
 Name:		parallel
-Version:	20180222
+Version:	20181122
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
-Source0:	http://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	33bf53bf8e3422ad05cfa7935315cd5f
-URL:		http://www.gnu.org/software/parallel/
+Source0:	https://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
+# Source0-md5:	2b0d799aef98e0684ac6dc4868d880fe
+URL:		https://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
 BuildArch:	noarch
@@ -48,7 +48,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/parallel
 	DESTDIR=$RPM_BUILD_ROOT
 
 mv $RPM_BUILD_ROOT%{_mandir}/man1/{sql,parallel-sql}.1
-:> $RPM_BUILD_ROOT%{_sysconfdir}/parallel/config
+touch $RPM_BUILD_ROOT%{_sysconfdir}/parallel/config
 rm -rv $RPM_BUILD_ROOT%{_docdir}/parallel
 
 %clean

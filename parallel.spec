@@ -34,6 +34,15 @@ programs.
 GNU Parallel is command-line-compatible with moreutils' parallel, but
 offers additional features.
 
+%package -n env_parallel
+Summary:	env_parallel
+Group:		Applications/System
+Requires:	%{name} = %{version}-%{release}
+
+%description -n env_parallel
+env_parallel is a shell function that exports the current environment
+to GNU parallel.
+
 %prep
 %setup -q
 
@@ -77,3 +86,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man7/parallel_book.7*
 %{_mandir}/man7/parallel_design.7*
 %{_mandir}/man7/parallel_tutorial.7*
+
+%files -n env_parallel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/env_parallel
+%attr(755,root,root) %{_bindir}/env_parallel.ash
+%attr(755,root,root) %{_bindir}/env_parallel.bash
+%attr(755,root,root) %{_bindir}/env_parallel.csh
+%attr(755,root,root) %{_bindir}/env_parallel.dash
+%attr(755,root,root) %{_bindir}/env_parallel.fish
+%attr(755,root,root) %{_bindir}/env_parallel.ksh
+%attr(755,root,root) %{_bindir}/env_parallel.mksh
+%attr(755,root,root) %{_bindir}/env_parallel.pdksh
+%attr(755,root,root) %{_bindir}/env_parallel.sh
+%attr(755,root,root) %{_bindir}/env_parallel.tcsh
+%attr(755,root,root) %{_bindir}/env_parallel.zsh
+%{_mandir}/man1/env_parallel.1*

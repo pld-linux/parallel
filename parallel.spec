@@ -46,6 +46,10 @@ to GNU parallel.
 %prep
 %setup -q
 
+%{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' src/{parallel,sem}
+%{__sed} -i -e '1{\@^#!@d}' src/env_parallel.*
+%{__sed} -i -e '1s,^#!/usr/bin/env ,#!/bin/,' src/env_* src/parset
+
 %build
 %configure
 %{__make}

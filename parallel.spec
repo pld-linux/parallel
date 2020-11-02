@@ -1,11 +1,11 @@
 Summary:	Shell tool for executing jobs in parallel
 Name:		parallel
-Version:	20200122
+Version:	20201022
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	https://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	c2649715d1fb099a70f6c0402071b31f
+# Source0-md5:	03899475967ff4ca529e3f998fbc4932
 URL:		https://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
@@ -77,6 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/parallel
 %attr(755,root,root) %{_bindir}/parcat
 %attr(755,root,root) %{_bindir}/parset
+%attr(755,root,root) %{_bindir}/parsort
 %attr(755,root,root) %{_bindir}/sem
 %attr(755,root,root) %{_bindir}/sql
 %{_mandir}/man1/niceload.1*
@@ -84,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/parallel-sql.1*
 %{_mandir}/man1/parcat.1*
 %{_mandir}/man1/parset.1*
+%{_mandir}/man1/parsort.1*
 %{_mandir}/man1/sem.1*
 %{_mandir}/man7/parallel_alternatives.7*
 %{_mandir}/man7/parallel_book.7*

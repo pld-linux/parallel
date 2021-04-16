@@ -1,4 +1,5 @@
 Summary:	Shell tool for executing jobs in parallel
+Summary(pl.UTF-8):	Narzędzie powłoki do równoległego uruchamiania zadań
 Name:		parallel
 Version:	20201022
 Release:	1
@@ -33,14 +34,39 @@ programs.
 GNU Parallel is command-line-compatible with moreutils' parallel, but
 offers additional features.
 
+%description -l pl.UTF-8
+GNU Parallel to narzędzie powłoki do równoległego uruchamiania zadań
+przy użyciu jednej lub większej liczby maszyn. Zadanie to zwykle
+pojedyncze polecenie lub mały skrypt, który ma być uruchomiony dla
+każdego wiersza z wejścia. Zwykle wejściem jest lista plików, lista
+hostów, lista użytkowników lub lista tabel.
+
+Korzystający dotychczas z xargs uznają GNU Parallel za bardzo łatwe w
+użyciu. Piszący pętle w języku powłoki zauważą, że GNU Parallel może
+zastąpić większość pętli i przyspieszyć je poprzez uruchamianie zadań
+równolegle. Użytkownicy programów ppss lub pexec zwykle uznają, że
+GNU Parallel czyni polecenia bardziej czytelnymi.
+
+GNU Parallel zapewnia dodatkowo, że wyjście poleceń jest takie samo,
+jak przy sekwencyjnym uruchamianiu poleceń. Pozwala to wykorzystywać
+wyjście z GNU Parallel jako wejście dla innych programów.
+
+GNU Parallel jest zgodny co do wiersza poleceń z narzędziem parallel z
+moreutils, ale oferuje dodatkowe możliwości.
+
 %package -n env_parallel
-Summary:	env_parallel
+Summary:	env_parallel shell function
+Summary(pl.UTF-8):	Funkca powłoki env_parallel
 Group:		Applications/System
 Requires:	%{name} = %{version}-%{release}
 
 %description -n env_parallel
 env_parallel is a shell function that exports the current environment
-to GNU parallel.
+to GNU Parallel.
+
+%description -n env_parallel -l pl.UTF-8
+env_parallel to funkcja powłoki eksportująca bieżące środowisko do
+GNU Parallel.
 
 %prep
 %setup -q

@@ -1,15 +1,16 @@
 Summary:	Shell tool for executing jobs in parallel
 Summary(pl.UTF-8):	Narzędzie powłoki do równoległego uruchamiania zadań
 Name:		parallel
-Version:	20201022
+Version:	20210322
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	https://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	03899475967ff4ca529e3f998fbc4932
+# Source0-md5:	812b448eb3daa0fb0226d340b94edcd6
 URL:		https://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
+BuildRequires:	rpmbuild(macros) >= 1.745
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -82,21 +83,20 @@ GNU Parallel.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/parallel
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_mandir}/man1/{sql,parallel-sql}.1
+%{__mv} $RPM_BUILD_ROOT%{_mandir}/man1/{sql,parallel-sql}.1
 touch $RPM_BUILD_ROOT%{_sysconfdir}/parallel/config
-rm -rv $RPM_BUILD_ROOT%{_docdir}/parallel
+%{__rm} -rv $RPM_BUILD_ROOT%{_docdir}/parallel
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README NEWS
-%doc src/parallel.html src/sem.html src/sql.html src/niceload.html
-%doc src/*.texi
+%doc CITATION CREDITS NEWS README
 %dir %{_sysconfdir}/parallel
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/parallel/config
 %attr(755,root,root) %{_bindir}/niceload

@@ -1,12 +1,13 @@
 Summary:	Shell tool for executing jobs in parallel
 Summary(pl.UTF-8):	Narzędzie powłoki do równoległego uruchamiania zadań
 Name:		parallel
-Version:	20220122
+Version:	20220622
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	https://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	ae4a8b2e93a78dad741564a92bc024c6
+# Source0-md5:	6b189242185b5b550ce98c9cf88bdd27
+Patch0:		%{name}-destdir.patch
 URL:		https://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
@@ -69,8 +70,35 @@ to GNU Parallel.
 env_parallel to funkcja powłoki eksportująca bieżące środowisko do
 GNU Parallel.
 
+%package -n bash-completion-parallel
+Summary:	Bash completion for parallel commands
+Summary(pl.UTF-8):	Bashowe uzupełnianie poleceń parallel
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	bash-completion >= 1:2.0
+
+%description -n bash-completion-parallel
+Bash completion for parallel commands.
+
+%description -n bash-completion-parallel -l pl.UTF-8
+Bashowe uzupełnianie poleceń parallel.
+
+%package -n zsh-completion-parallel
+Summary:	Zsh completion for parallel commands
+Summary(pl.UTF-8):	Uzupełnianie poleceń parallel w Zsh
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	zsh
+
+%description -n zsh-completion-parallel
+Zsh completion for parallel commands.
+
+%description -n zsh-completion-parallel -l pl.UTF-8
+Uzupełnianie poleceń parallel w Zsh.
+
 %prep
 %setup -q
+%patch0 -p1
 
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' src/{parallel,sem}
 %{__sed} -i -e '1{\@^#!@d}' src/env_parallel.*
@@ -133,3 +161,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/env_parallel.tcsh
 %attr(755,root,root) %{_bindir}/env_parallel.zsh
 %{_mandir}/man1/env_parallel.1*
+
+%files -n bash-completion-parallel
+%defattr(644,root,root,755)
+%{bash_compdir}/parallel
+
+%files -n zsh-completion-parallel
+%defattr(644,root,root,755)
+%{zsh_compdir}/_parallel

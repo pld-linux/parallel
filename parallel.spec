@@ -1,13 +1,12 @@
 Summary:	Shell tool for executing jobs in parallel
 Summary(pl.UTF-8):	Narzędzie powłoki do równoległego uruchamiania zadań
 Name:		parallel
-Version:	20220622
+Version:	20221122
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	https://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	6b189242185b5b550ce98c9cf88bdd27
-Patch0:		%{name}-destdir.patch
+# Source0-md5:	3a2b8a4afe6f168d8d3ed58c126ef563
 URL:		https://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
@@ -98,7 +97,6 @@ Uzupełnianie poleceń parallel w Zsh.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %{__sed} -i -e '1s,^#!.*perl,#!%{__perl},' src/{parallel,sem}
 %{__sed} -i -e '1{\@^#!@d}' src/env_parallel.*
@@ -144,6 +142,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man7/parallel_alternatives.7*
 %{_mandir}/man7/parallel_book.7*
 %{_mandir}/man7/parallel_design.7*
+%{_mandir}/man7/parallel_examples.7*
 %{_mandir}/man7/parallel_tutorial.7*
 
 %files -n env_parallel

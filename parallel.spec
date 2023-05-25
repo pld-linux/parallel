@@ -1,12 +1,12 @@
 Summary:	Shell tool for executing jobs in parallel
 Summary(pl.UTF-8):	Narzędzie powłoki do równoległego uruchamiania zadań
 Name:		parallel
-Version:	20221122
+Version:	20230522
 Release:	1
 License:	GPL v3+
 Group:		Applications/System
 Source0:	https://ftp.gnu.org/gnu/parallel/%{name}-%{version}.tar.bz2
-# Source0-md5:	3a2b8a4afe6f168d8d3ed58c126ef563
+# Source0-md5:	be0dbb93ad50efdc6daa48ae2c03e434
 URL:		https://www.gnu.org/software/parallel/
 BuildRequires:	perl-tools-pod
 BuildRequires:	rpm-perlprov
